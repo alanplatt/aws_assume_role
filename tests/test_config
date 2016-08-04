@@ -1,0 +1,13 @@
+[profile prod]
+role_arn = arn:aws:iam::099999999999:role/users/some_role
+mfa_serial = arn:aws:iam::999999999982:mfa/user.name
+source_profile = default
+output = json
+region = eu-west-1
+
+[profile dev]
+role_arn = arn:aws:iam::942222222276:role/users/some_role
+mfa_serial = arn:aws:iam::111231231232:mfa/user.name
+output = json
+source_profile = default
+region = eu-west-1
