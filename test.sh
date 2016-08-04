@@ -5,7 +5,9 @@ set -e
 
 echo "Creating virtualenv..."
 VENV_NAME=".venv"
-virtualenv ${VENV_NAME}
+if ! [ -e "${VENV_NAME}/bin/activate" ]; then
+  virtualenv ${VENV_NAME}
+fi
 source "${VENV_NAME}/bin/activate"
 
 echo "Installing requirements..."
