@@ -27,7 +27,15 @@ install the required pips. This keeps the requirements for this script seperate 
 ```
 _awscon() {
 
-  venv_name=".venv"
+  AWS_ASSUME_ROLE_DIR="/Users/arqiva/workarea/aws_assume_role"
+  VENV_NAME=".venv"
+  if ! [ -e "${AWS_ASSUME_ROLE_DIR}/${VENV_NAME}/bin/activate" ]; then
+    echo "Creating virtualenv..."
+    virtualenv "${AWS_ASSUME_ROLE_DIR}/${VENV_NAME}"
+  fi
+  source "${AWS_ASSUME_ROLE_DIR}/${VENV_NAME}/bin/activate"
+  pip install -q -r "${AWS_ASSUME_ROLE_DIR}/requirements.txt"
+
   eval $(python ${aws_assume_role_dir}/aws_assume_role.py --profile $1 --MFAtoken $2)
 }
 ```
