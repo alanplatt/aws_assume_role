@@ -31,19 +31,19 @@ def main(argv):
     role_arn = config.get(profile, 'role_arn')
 
 
-    #sts_connection = connect_to_sts_region(aws_access_key, aws_secret_key)
-    #assumedRoleObject = assume_aws_role(sts_connection=sts_connection,
-    #                                    role_arn=role_arn,
-    #                                    role_session_name=session_name,
-    #                                    mfa_serial_number=mfa_serial_number,
-    #                                    mfa_token=mfa_token)
+    sts_connection = connect_to_sts_region(aws_access_key, aws_secret_key)
+    assumedRoleObject = assume_aws_role(sts_connection=sts_connection,
+                                        role_arn=role_arn,
+                                        role_session_name=session_name,
+                                        mfa_serial_number=mfa_serial_number,
+                                        mfa_token=mfa_token)
 
-    #unset_shell_environment_variables()
+    unset_shell_environment_variables()
 
-    #set_shell_environment_variables(assumedRoleObject=assumedRoleObject,
-    #             region=region,
-    #             session_name=session_name,
-    #             profile=profile)
+    set_shell_environment_variables(assumedRoleObject=assumedRoleObject,
+                 region=region,
+                 session_name=session_name,
+                 profile=profile)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
