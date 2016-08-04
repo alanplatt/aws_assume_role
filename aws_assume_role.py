@@ -40,10 +40,14 @@ def main(argv):
 
     unset_shell_environment_variables()
 
-    set_shell_environment_variables(assumedRoleObject=assumedRoleObject,
-                 region=region,
-                 session_name=session_name,
-                 profile=profile)
+    set_shell_environment_variables(assumedRoleObject.credentials.access_key,
+                                    assumedRoleObject.credentials.secret_key,
+                                    assumedRoleObject.credentials.session_token,
+                                    region,
+                                    session_name,
+                                    assumedRoleObject.credentials.expiration,
+                                    profile
+                                    )
 
 if __name__ == "__main__":
     main(sys.argv[1:])
