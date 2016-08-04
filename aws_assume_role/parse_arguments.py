@@ -1,10 +1,12 @@
 import argparse
 
+
 def parse_args(argv):
     """
     Parse all command line arguments and return a dict
     """
-    parser = argparse.ArgumentParser(description='Switch between aws profiles and export shell variables.')
+    parser = argparse.ArgumentParser(description='''Switch between aws
+                                     profiles and export shell variables.''')
     parser.add_argument('--profile',
                         metavar='PROFILE',
                         nargs='?',
@@ -18,6 +20,5 @@ def parse_args(argv):
                         metavar='TOKEN',
                         nargs=1,
                         help='Set MFA token from command line')
-
 
     return parser.parse_args(argv)
