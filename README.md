@@ -1,6 +1,6 @@
 # aws_assume_role #
 
-This is a refactor with added MFA support of a [script](https://gist.github.com/mlrobinson/944fd0e2ad4926ba71c9) by [mlrobinson](https:/
+This is a refactor with added MFA support of a [script](https://gist.github.com/mlrobinson/944fd0e2ad4926ba71c9) by [mlrobinson](https://gist.github.com/mlrobinson)
 Thanks for the inspiration!
 
 Python script to switch between aws profiles and set up your shell environment. Supports MFA.
