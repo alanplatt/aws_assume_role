@@ -16,7 +16,7 @@ def get_MFA_token(token=False):
     try:
         return int(token)
     except:
-        raise ValueError('You must inter an integer as an MFA token')
+        raise ValueError('You must enter an integer as an MFA token')
 
 
 def load_config(files):
