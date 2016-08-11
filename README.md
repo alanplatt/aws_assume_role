@@ -1,5 +1,14 @@
 # aws_assume_role #
 
+#### Table of Contents
+1. [Overview](#overview)
+2. [Assumptions](#assumptions)
+3. [Tests](#test)
+4. [Setup](#setup)
+5. [Example configs](#example configs)
+
+### Overview ###
+
 This is a refactor with added MFA support of a [script](https://gist.github.com/mlrobinson/944fd0e2ad4926ba71c9) by [mlrobinson](https://gist.github.com/mlrobinson)
 Thanks for the inspiration!
 
@@ -12,6 +21,9 @@ Please see the config examples below for usage.
 ### Assumptions ###
 You have a working python and python virtualenv installed.
 
+
+### Tests ###
+To test run test.sh. Branches pushed to this repo are automatically tested on osx and linux by Travis CI
 
 ### Setup ###
 
