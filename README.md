@@ -1,5 +1,7 @@
 # aws_assume_role #
 
+[![Build Status](https://travis-ci.org/capablue/aws_assume_role.svg)](https://travis-ci.org/capablue/aws_assume_role)
+
 #### Table of Contents
 1. [Overview](#overview)
 2. [Assumptions](#assumptions)
