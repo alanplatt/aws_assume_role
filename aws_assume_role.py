@@ -10,7 +10,6 @@ from aws_assume_role.aws import (get_MFA_token, load_config, test_config,
 def main(argv):
     args = parse_args(argv)
     profile = args.profile
-    config = load_config(["~/.aws/credentials", "~/.aws/config"])
     mfa_token = None
     mfa_serial_number = None
     session_name = '%s-%s' % (getpass.getuser(), profile)
@@ -19,11 +18,15 @@ def main(argv):
     if not profile == 'default':
         profile = "profile " + profile
 
-    test_config(profile, config)
 
     if args.MFA or args.MFAtoken:
         mfa_token = get_MFA_token(args.MFAtoken[0])
+        config = load_config(["~/.aws/credentials", "~/.aws/config"])
         mfa_serial_number = config.get(profile, 'mfa_serial')
+    else:
+        config = load_config(["~/.aws/credentials"])
+
+    test_config(profile, config)
 
     region = config.get(profile, 'region')
     aws_access_key = config.get('default', 'aws_access_key_id')
