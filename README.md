@@ -27,6 +27,9 @@ You have a working python and python virtualenv installed.
 ### Tests ###
 To test run test.sh. Branches pushed to this repo are automatically tested on osx and linux by Travis CI
 
+### Usage ###
+For general usage see [setup](#setup) below.  To run the script outside of a shell eval statement for testing etc please run the script with the --help section for detailed explanations of each option.
+
 ### Setup ###
 
 As we are setting the environment variables of the current shell we must run the script in an eval statement.
