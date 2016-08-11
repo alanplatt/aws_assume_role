@@ -84,20 +84,20 @@ def test_config(profile, config):
 
     for option in ['aws_access_key_id', 'aws_secret_access_key']:
         if not config.has_option('default', option):
-            print """echo Missing {} from 'default' section of the credentials
-                   file.;""".format(option)
+            print """echo {} not in 'default' section of credentials file.;"""\
+                    .format(option)
             exit(2)
 
     if not profile == 'default':
-        if not config.has_option(profile, 'region'):
-            print config.get(profile, 'region')
-            print "echo {} profile does not have 'region' set".format(profile)
+        if not config.has_section(profile):
+            print """echo Account '{}' not in the credentials file.;"""\
+                    .format(profile)
             exit(3)
 
-        if not config.has_section(profile):
-            print """echo Account '{}' does not exist in the credentials file.;
-                   """.format(profile)
+        if not config.has_option(profile, 'region'):
+            print "echo '{}' config does not have 'region' set".format(profile)
             exit(4)
+
         for option in ['source_profile', 'role_arn']:
             if not config.has_option(profile, option):
                 print """echo Profile '{}' is missing the required option, '{}'
