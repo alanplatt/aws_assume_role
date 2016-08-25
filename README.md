@@ -44,6 +44,7 @@ install the required pips. This keeps the requirements for this script seperate 
 ```
 _awscon() {
 
+  #WARNING: Dont use '~' in the variable below. The python virtualenv command takes '~' literally as a character. You will end up with a folder called "~" which has caused some people to accidently delete their home areas.
   AWS_ASSUME_ROLE_DIR="/Users/arqiva/workarea/aws_assume_role"
   VENV_NAME=".venv"
   if ! [ -e "${AWS_ASSUME_ROLE_DIR}/${VENV_NAME}/bin/activate" ]; then
@@ -53,7 +54,7 @@ _awscon() {
   source "${AWS_ASSUME_ROLE_DIR}/${VENV_NAME}/bin/activate"
   pip install -q -r "${AWS_ASSUME_ROLE_DIR}/requirements.txt"
 
-  eval $(python ${aws_assume_role_dir}/aws_assume_role.py --profile $1 --MFAtoken $2)
+  eval $(python ${AWS_ASSUME_ROLE_DIR}/aws_assume_role.py --profile $1 --MFAtoken $2)
 }
 ```
 
