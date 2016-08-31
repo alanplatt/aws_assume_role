@@ -24,13 +24,14 @@ def main(argv):
         config = load_config(["~/.aws/credentials", "~/.aws/config"])
         mfa_serial_number = config.get(profile, 'mfa_serial')
     else:
-        config = load_config(["~/.aws/credentials"])
+        config = load_config(["~/.aws/credentials", "~/.aws/config"])
 
     test_config(profile, config)
+    source_profile = config.get(profile, 'source_profile') or 'default'
 
     region = config.get(profile, 'region')
-    aws_access_key = config.get('default', 'aws_access_key_id')
-    aws_secret_key = config.get('default', 'aws_secret_access_key')
+    aws_access_key = config.get(source_profile, 'aws_access_key_id')
+    aws_secret_key = config.get(source_profile, 'aws_secret_access_key')
     role_arn = config.get(profile, 'role_arn')
 
 
