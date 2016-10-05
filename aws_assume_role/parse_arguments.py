@@ -20,5 +20,10 @@ def parse_args(argv):
                         metavar='TOKEN',
                         nargs=1,
                         help='Set MFA token from command line')
+    parser.add_argument('--AWSaccount',
+                        metavar='AWSACCOUNT',
+                        nargs=1,
+                        default='default',
+                        help='Set the AWS account to use')
 
     return parser.parse_args(argv)

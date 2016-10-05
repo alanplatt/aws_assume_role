@@ -29,8 +29,8 @@ def main(argv):
     test_config(profile, config)
 
     region = config.get(profile, 'region')
-    aws_access_key = config.get('default', 'aws_access_key_id')
-    aws_secret_key = config.get('default', 'aws_secret_access_key')
+    aws_access_key = config.get(args.AWSaccount, 'aws_access_key_id')
+    aws_secret_key = config.get(args.AWSaccount, 'aws_secret_access_key')
     role_arn = config.get(profile, 'role_arn')
 
 
