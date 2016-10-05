@@ -14,9 +14,11 @@ def get_MFA_token(token=False):
         token = raw_input("Enter the MFA code: ")
 
     try:
-        return int(token)
+        int(token)
     except:
         raise ValueError('You must enter an integer as an MFA token')
+
+    return token
 
 
 def load_config(files):

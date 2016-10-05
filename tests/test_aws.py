@@ -10,7 +10,7 @@ class TestAWS(unittest.TestCase):
         If passed an integer function should return said integer
         """
         with patch('__builtin__.raw_input', return_value='1234') as _raw_input:
-            self.assertEquals(get_MFA_token(), 1234)
+            self.assertEquals(get_MFA_token(), '1234')
             _raw_input.assert_called_once_with("Enter the MFA code: ")
 
     def test_get_MFA_token_bad_token(self):
