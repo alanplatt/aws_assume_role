@@ -76,7 +76,7 @@ def set_shell_environment_variables(access_key, secret_key, session_token,
     print "echo Account {} is setup for use.;".format(profile)
 
 
-def test_config(profile, config):
+def validate_config(profile, config):
     """
     Test to see if the config that has been passed has the variables required
     """
