@@ -1,6 +1,6 @@
 import unittest
 from mock import patch
-from aws_assume_role.aws import (get_MFA_token, load_config)
+from aws_assume_role.aws import (get_MFA_token, load_config, validate_config)
 
 
 class TestAWS(unittest.TestCase):
@@ -33,3 +33,10 @@ class TestAWS(unittest.TestCase):
         result = load_config(["tests/test_config"])
         self.assertTrue(result.has_section("profile dev"))
         self.assertTrue(result.has_section("profile prod"))
+
+    def test_validate_config(self):
+        """
+        If valid config is passes then return True
+        """
+        config = load_config(["tests/test_credentials"])
+        self.assertTrue(validate_config('default', config))
