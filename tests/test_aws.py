@@ -1,6 +1,6 @@
 import unittest
 from mock import patch
-from aws_assume_role.aws import (get_MFA_token, load_config)
+from aws_assume_role.aws import (get_MFA_token, load_config, validate_config)
 
 
 class TestAWS(unittest.TestCase):
@@ -9,8 +9,8 @@ class TestAWS(unittest.TestCase):
         """
         If passed an integer function should return said integer
         """
-        with patch('__builtin__.raw_input', return_value='1234') as _raw_input:
-            self.assertEquals(get_MFA_token(), 1234)
+        with patch('__builtin__.raw_input', return_value='0123') as _raw_input:
+            self.assertEquals(get_MFA_token(), '0123')
             _raw_input.assert_called_once_with("Enter the MFA code: ")
 
     def test_get_MFA_token_bad_token(self):
@@ -33,3 +33,10 @@ class TestAWS(unittest.TestCase):
         result = load_config(["tests/test_config"])
         self.assertTrue(result.has_section("profile dev"))
         self.assertTrue(result.has_section("profile prod"))
+
+    def test_validate_config(self):
+        """
+        If valid config is passes then return True
+        """
+        config = load_config(["tests/test_credentials"])
+        self.assertTrue(validate_config('default', config))

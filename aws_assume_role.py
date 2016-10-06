@@ -3,7 +3,7 @@
 import sys
 import getpass
 from aws_assume_role.parse_arguments import parse_args
-from aws_assume_role.aws import (get_MFA_token, load_config, test_config,
+from aws_assume_role.aws import (get_MFA_token, load_config, validate_config,
                                  connect_to_sts_region, set_shell_environment_variables,
                                  assume_aws_role, unset_shell_environment_variables)
 
@@ -26,7 +26,7 @@ def main(argv):
     else:
         config = load_config(["~/.aws/credentials"])
 
-    test_config(profile, config)
+    validate_config(profile, config)
 
     region = config.get(profile, 'region')
     aws_access_key = config.get('default', 'aws_access_key_id')
